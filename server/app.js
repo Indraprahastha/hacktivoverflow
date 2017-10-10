@@ -25,6 +25,6 @@ app.use('/question',question)
 app.use('/answer',answer)
 app.use('/grup',grup)
 
-app.listen(3000,function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log('Hacktivoverflow Jalan');
 })
