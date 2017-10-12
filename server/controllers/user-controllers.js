@@ -27,14 +27,27 @@ const getUser = (req,res) => {
 }
 //----------------------------------------------------- fine data(v)
 const findUser = (req,res) => {
+  let filter = jwt.verify(req.headers.token, process.env.DB_HOST,(err,decoded)=>{
+    return decoded._id
+    console.log(decoded._id);
+  })
   user.findById({
-    _id:req.params.id
+    _id:filter
   }).then((user)=>{
     res.send(user)
   }).catch((err)=>{
     res.send(err)
   })
 }
+// const findUser = (req,res) => {
+//   user.findById({
+//     _id:req.params.id
+//   }).then((user)=>{
+//     res.send(user)
+//   }).catch((err)=>{
+//     res.send(err)
+//   })
+// }
 //----------------------------------------------------- edit data(v)
 const editUser = (req,res) => {
   let hash = bcrypt.hashSync(req.body.password, salt);

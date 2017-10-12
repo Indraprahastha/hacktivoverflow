@@ -5,7 +5,7 @@ let user = require('../controllers/user-controllers')
 
 router.get('/',user.getUser)
 router.post('/',user.addUser)
-router.get('/:id',user.findUser)
+router.get('/profile',user.findUser)
 router.put('/:id',user.editUser)
 router.delete('/:id',user.deleteUser)
 router.post('/login',user.loginUser)
